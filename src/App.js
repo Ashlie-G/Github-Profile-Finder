@@ -35,17 +35,7 @@ const App =()=> {
   //   this.setState({users: response.data, loading: false})
   // }
 
-  const searchUsers = async text => {
-    setLoading(true)
-    // this.setState({loading: true})
-    const response = await axios.get
-    (`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_CLIENT_ID}
-    &client_secret=${process.env.REACT_APP_CLIENT_SECRET}`)
-    setUsers(response.data.items)
-    setLoading(false)
-    // this.setState({users: response.data.items, loading: false})
-    
-  }
+//moved search users to github state
 
   //get a single github user
   const getUser = async (username) => {
@@ -102,12 +92,12 @@ const App =()=> {
             <Switch>
               <Route exact path='/' render={props => (
                 <Fragment>
-                   <Search searchUsers={searchUsers}
+                   <Search 
                     clearUsers={clearUsers}
                     showClear={users.length > 0 ? true : false}
                     showAlert={setAlert} 
                     />
-                  <Users loading={loading} users={users} />
+                  <Users  />
                 </Fragment>
               )} 
               />
