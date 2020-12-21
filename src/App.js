@@ -4,6 +4,7 @@ import Navbar from './Components/Layout/Navbar'
 import User from './Components/Users/User'
 import Alert from './Components/Layout/Alert'
 import About from './Components/Pages/About'
+import NotFound from './Components/Pages/NotFound'
 import Home from './Components/Pages/Home'
 
 import GithubState from './Context/github/GithubState'
@@ -56,6 +57,7 @@ const App =()=> {
               <Route exact path='/' component={Home}/>
               <Route exact path='/about' component={About}/>
               <Route exact path='/user/:login' component={User}/>
+              <Route component={NotFound}/>
             </Switch>
            
         </div>  
