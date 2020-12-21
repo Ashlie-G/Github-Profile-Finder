@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
 import UserItem from './UserItem'
 import Spinner from '../Layout/Spinner'
-import PropTypes from 'prop-types'
 import GithubContext from '../../Context/github/GithubContext'
 
 
@@ -23,11 +22,6 @@ const Users = () => {
     )
     }
     
-}
-
-Users.prototype = {
-    users: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired
 }
 
 
