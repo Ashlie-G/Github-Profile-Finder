@@ -1,41 +1,34 @@
-import React, {Fragment, Component} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import Spinner from '../Layout/Spinner'
 import Repos from '../Repos/Repos'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 
-class User extends Component {
-    componentDidMount() {
-        this.props.getUser(this.props.match.params.login)
-        this.props.getUserRepos(this.props.match.params.login)
+const User = ({user, loading, getUser, getUserRepos, repos, match}) =>{
+    useEffect(()=> {
+        getUser(match.params.login)
+        getUserRepos(match.params.login)
+        //eslint-disable-next-line
+    }, []) 
 
-    }
-    static propTypes = {
-        loading: PropTypes.bool.isRequired,
-        user: PropTypes.object.isRequired,
-        getUser: PropTypes.func.isRequired,
-        getUserRepos: PropTypes.func.isRequired,
-        repos: PropTypes.array.isRequired
-    }
+   
+    const {
+        name,
+        avatar_url,
+        location, 
+        bio,
+        blog,
+        login,
+        html_url,
+        company,
+        followers,
+        following,
+        public_repos,
+        public_gists,
+        hireable
+    } 
+        =user 
 
-    render() {
-        const {
-            name,
-            avatar_url,
-            location, 
-            bio,
-            blog,
-            login,
-            html_url,
-            company,
-            followers,
-            following,
-            public_repos,
-            public_gists,
-            hireable
-        } = this.props.user
-
-        const {loading, repos} = this.props
 
         if(loading) return <Spinner />
 
@@ -98,8 +91,17 @@ class User extends Component {
                 <Repos repos={repos} />
             </Fragment>
         )
+}
         
-    }
+
+
+
+User.propTypes = {
+    loading: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
+    getUser: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
+    repos: PropTypes.array.isRequired
 }
 
 
