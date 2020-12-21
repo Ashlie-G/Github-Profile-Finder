@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Navbar from './Components/Layout/Navbar'
 import User from './Components/Users/User'
@@ -56,7 +56,7 @@ const App =()=> {
             <Switch>
               <Route exact path='/' component={Home}/>
               <Route exact path='/about' component={About}/>
-              <Route exact path='/user/:login' component={User}/>
+              <Route exact path='/user/:login' component={User} target="_blank"/>
               <Route component={NotFound}/>
             </Switch>
            
